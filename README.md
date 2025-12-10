@@ -2,7 +2,6 @@
 
 Open technical release of the Cognitive Supernova Generator (CSG) fusion-fission hybrid reactor: OpenMC neutronics model, materials, safety, and Peaceful Use-only license for ocean cleanup, waste transmutation, and humanitarian energy.
 
-⭐ 1 star · 🍴 0 forks · 👀 0 watching  
 🌐 Public repository  
 
 ## About the Project
