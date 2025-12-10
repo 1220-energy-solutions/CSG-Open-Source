@@ -1,0 +1,152 @@
+cat > final_push.py << 'ENDPYTHON'
+#!/usr/bin/env python3
+"""
+FINAL PUSH - Sources at r=340cm (just outside breeder edge)
+"""
+import openmc
+import numpy as np
+
+rafm = openmc.Material(name='RAFM_steel')
+rafm.add_element('Fe', 0.895, 'wo')
+rafm.add_element('Cr', 0.090, 'wo')
+rafm.add_element('W',  0.010, 'wo')
+rafm.add_element('V',  0.002, 'wo')
+rafm.add_element('Mn', 0.003, 'wo')
+rafm.set_density('g/cm3', 7.8)
+
+breeder = openmc.Material(name='Breeder_max')
+li_frac = 2.0 * 0.90
+ti_frac = 1.0 * 0.90
+o_frac  = 3.0 * 0.90
+be_frac = 5.0 * 0.90
+pb_frac = 0.843 * 0.10
+li_coolant_frac = 0.157 * 0.10
+total_li = li_frac + li_coolant_frac
+
+breeder.add_element('Li', total_li, 'ao', enrichment=90.0, enrichment_target='Li6')
+breeder.add_element('Ti', ti_frac, 'ao')
+breeder.add_element('O',  o_frac,  'ao')
+breeder.add_element('Be', be_frac, 'ao')
+breeder.add_element('Pb', pb_frac, 'ao')
+breeder.set_density('g/cm3', 2.8)
+
+core = openmc.Material(name='Fission_core_5pct')
+core.add_nuclide('U235', 0.05, 'ao')
+core.add_nuclide('U238', 0.70, 'ao')
+core.add_element('O',    0.20, 'ao')
+core.add_element('Pb',   0.05, 'ao')
+core.set_density('g/cm3', 10.5)
+
+reflector = openmc.Material(name='Be_Fe_reflector')
+reflector.add_element('Be', 0.60, 'ao')
+reflector.add_element('Fe', 0.40, 'ao')
+reflector.set_density('g/cm3', 4.0)
+
+shield = openmc.Material(name='Borated_concrete_shield')
+shield.add_element('Si', 0.20, 'ao')
+shield.add_element('O',  0.45, 'ao')
+shield.add_element('Ca', 0.10, 'ao')
+shield.add_element('B',  0.15, 'ao')
+shield.add_element('C',  0.05, 'ao')
+shield.add_element('Fe', 0.05, 'ao')
+shield.set_density('g/cm3', 3.5)
+
+materials = openmc.Materials([rafm, breeder, core, reflector, shield])
+materials.export_to_xml()
+
+sph_0   = openmc.Sphere(r=200.0)
+sph_350 = openmc.Sphere(r=350.0)
+sph_395 = openmc.Sphere(r=395.0)
+sph_500 = openmc.Sphere(r=500.0, boundary_type='vacuum')
+
+cell_core = openmc.Cell(name='fission_core')
+cell_core.region = -sph_0
+cell_core.fill = core
+
+cell_breeder = openmc.Cell(name='breeder_zone')
+cell_breeder.region = +sph_0 & -sph_350
+cell_breeder.fill = breeder
+
+cell_reflector = openmc.Cell(name='reflector')
+cell_reflector.region = +sph_350 & -sph_395
+cell_reflector.fill = reflector
+
+cell_shield = openmc.Cell(name='shield')
+cell_shield.region = +sph_395 & -sph_500
+cell_shield.fill = shield
+
+universe = openmc.Universe(cells=[cell_core, cell_breeder, cell_reflector, cell_shield])
+geometry = openmc.Geometry(universe)
+geometry.export_to_xml()
+
+def fibonacci_sphere(samples=32):
+    points = []
+    phi_fib = np.pi * (3.0 - np.sqrt(5.0))
+    for i in range(samples):
+        y = 1 - (i / float(samples - 1)) * 2
+        radius = np.sqrt(1 - y * y)
+        theta = phi_fib * i
+        x = np.cos(theta) * radius
+        z = np.sin(theta) * radius
+        points.append([x, y, z])
+    return np.array(points)
+
+target_radius = 340.0  # Just outside breeder at 350cm
+face_centers = fibonacci_sphere(32) * target_radius
+
+sources = []
+for center in face_centers:
+    src = openmc.IndependentSource()
+    src.space = openmc.stats.Point(center)
+    src.angle = openmc.stats.Isotropic()
+    src.energy = openmc.stats.Discrete([14.1e6], [1.0])
+    src.strength = 1.0 / 32.0
+    sources.append(src)
+
+settings = openmc.Settings()
+settings.run_mode = 'fixed source'
+settings.source = sources
+settings.batches = 110
+settings.inactive = 10
+settings.particles = 10000
+settings.export_to_xml()
+
+tallies = openmc.Tallies()
+
+tally_li6 = openmc.Tally(name='Li6_tritium')
+tally_li6.filters = [openmc.CellFilter([cell_breeder])]
+tally_li6.scores = ['(n,Xt)']
+tally_li6.nuclides = ['Li6']
+tallies.append(tally_li6)
+
+tally_li7 = openmc.Tally(name='Li7_tritium')
+tally_li7.filters = [openmc.CellFilter([cell_breeder])]
+tally_li7.scores = ['(n,Xt)']
+tally_li7.nuclides = ['Li7']
+tallies.append(tally_li7)
+
+tally_u235 = openmc.Tally(name='U235_fission')
+tally_u235.filters = [openmc.CellFilter([cell_core])]
+tally_u235.scores = ['fission']
+tally_u235.nuclides = ['U235']
+tallies.append(tally_u235)
+
+tally_u238 = openmc.Tally(name='U238_fission')
+tally_u238.filters = [openmc.CellFilter([cell_core])]
+tally_u238.scores = ['fission']
+tally_u238.nuclides = ['U238']
+tallies.append(tally_u238)
+
+tallies.export_to_xml()
+
+print("="*70)
+print("FINAL PUSH - r=340cm (just outside breeder)")
+print("="*70)
+print("Breeder: 200-350cm (150cm thick)")
+print("Sources: 340cm (10cm outside breeder edge)")
+print("Target: TBR > 1.20")
+print("="*70)
+ENDPYTHON
+
+python3 final_push.py
+openmc

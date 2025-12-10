@@ -1,0 +1,119 @@
+# Peaceful Use License for CSG (PUL-CSG 1.0)
+
+**Cognitive Supernova Generator (CSG) Reactor Design & OpenMC Neutronics Model**
+
+---
+
+## Copyright & Attribution
+
+Copyright © 2025 Francis A. Cooper. All rights reserved.
+
+**Author:** Francis A. Cooper, Tarpon Springs, Florida, USA  
+**Date of Release:** December 2025  
+**Work:** Cognitive Supernova Generator (CSG) fusion–fission hybrid reactor concept, all associated technical documentation (including CSG-Open-Source-Publication.pdf and appendices), and OpenMC neutronics models and scripts.
+
+---
+
+## 1. Grant of Rights
+
+Permission is granted to any person or organization obtaining a copy of this work to:
+
+- Copy and distribute this work and its documentation in original or modified form.  
+- Study, analyze, and review the technical content for education, research, and verification.  
+- Run and execute the OpenMC simulation code and post‑processing scripts.  
+- Modify, extend, and build upon the design, neutronics model, or code.  
+- Publish findings, improvements, and critiques derived from this work.  
+- Develop prototype, pilot, or full‑scale implementations based on this design.
+
+**All of the above are allowed only for peaceful, non‑military, humanitarian, environmental, and other civilian applications.**
+
+---
+
+## 2. Permitted Uses
+
+Examples of explicitly permitted uses include, but are not limited to:
+
+- Ocean restoration, cleanup, and desalination systems.  
+- Nuclear waste reduction and transmutation.  
+- Humanitarian and distributed clean energy access.  
+- Climate change mitigation and environmental remediation.  
+- Academic research and university-level education.  
+- Open-science collaboration and peer review.  
+- Non‑profit and intergovernmental environmental or public‑benefit projects.
+
+---
+
+## 3. Prohibited Uses
+
+The following uses are strictly prohibited:
+
+- Weapons development or any military application.  
+- Design, testing, or deployment of systems intended for armed conflict.  
+- Activities that support nuclear weapons programs, including plutonium or tritium production for weapons.  
+- Use of this work to create proprietary or closed-source derivatives that restrict access to the underlying design, model, or data.  
+- Any use that violates international non‑proliferation agreements or relevant national and international law.  
+
+Violation of this section immediately terminates all rights granted by this license.
+
+---
+
+## 4. Conditions
+
+To exercise the rights granted above, you must comply with all of the following:
+
+### 4.1 Attribution
+
+- Credit the original author in documentation and publications with a notice such as:  
+  *“Based on the Cognitive Supernova Generator (CSG) work by Francis A. Cooper (2025), used under the Peaceful Use License for CSG (PUL‑CSG 1.0).”*  
+- Include a copy of this license text with any substantial portion of the work or derivatives.  
+- Clearly mark any modifications you make.
+
+### 4.2 Same-Terms Requirement
+
+- Any modifications, extensions, or derivative works must be released under terms **no less restrictive** than this license, including the peaceful‑use and anti‑weapons provisions.  
+- You may not remove, weaken, or circumvent the peaceful‑use restrictions in downstream distributions.
+
+### 4.3 No Warranty
+
+This work is provided **“as is”**, without any warranty of any kind, express or implied, including, but not limited to, fitness for a particular purpose, safety, or regulatory compliance.
+
+The author shall not be liable for any claim, damages, or other liability, whether in an action of contract, tort, or otherwise, arising from, out of, or in connection with this work or its use.
+
+---
+
+## 5. Regulatory and Legal Compliance
+
+Users are solely responsible for:
+
+- Ensuring compliance with all applicable national and international laws and regulations related to nuclear technology, export control, safety, and the environment.  
+- Obtaining all required licenses, permits, and approvals before constructing, operating, or testing any system based on this work.  
+
+Nothing in this license constitutes legal, regulatory, or safety approval.
+
+---
+
+## 6. Termination
+
+This license and all rights under it terminate automatically if:
+
+- You use the work for any prohibited purpose described in Section 3.  
+- You remove or alter this license or peaceful‑use conditions in redistributed or derivative versions.  
+
+Upon termination, you must cease all use and distribution of this work and any derivative based on it, except to the extent required by law.
+
+---
+
+## 7. Severability
+
+If any provision of this license is held invalid or unenforceable, that provision shall be modified to the minimum extent necessary to make it enforceable, and the remaining provisions shall remain in full force and effect.
+
+---
+
+## 8. Entire Agreement
+
+This license constitutes the entire agreement between the author and any user of this work regarding the subject matter hereof. No additional terms or representations apply unless agreed in a signed writing by Francis A. Cooper.
+
+---
+
+**License version:** PUL‑CSG 1.0  
+**Last updated:** December 2025

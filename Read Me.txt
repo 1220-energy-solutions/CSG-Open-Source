@@ -1,0 +1,64 @@
+Cognitive Supernova Generator (CSG)  
+Fusion–Fission Hybrid Reactor – Open Technical Release
+
+Overview  
+
+The Cognitive Supernova Generator (CSG) is a compact fusion–fission hybrid reactor concept that combines distributed D–T fusion neutron sources with a subcritical U‑238 blanket and lithium-based tritium breeding zone. The OpenMC model included here demonstrates a tritium breeding ratio (TBR) of approximately 1.25 in a 10‑meter-class spherical configuration with 32 distributed fusion sources.
+
+This repository publishes the complete technical package for independent verification, critique, and peaceful development by the global community. It is not a product, not a company pitch, and not a request for funding.
+Intent and license  
+
+This work is released as a gift for peaceful, humanitarian, and environmental applications only. The core intent is:
+
+- Provide a reproducible neutronics model for a fusion–fission hybrid concept that can self-breed its tritium and burn depleted uranium waste.
+
+- Enable universities, labs, and engineers to verify, improve, or refute the design using standard tools such as OpenMC.
+
+- Support applications like ocean cleanup, desalination, climate mitigation, and nuclear waste reduction, not weapons or military systems.
+
+A separate LICENSE file in this repo restates the “Peaceful Use Only” open-source terms from the main CSG document. In plain language: you may copy, study, run, and build on this work for peaceful civilian uses; you may not use it for weapons development, military applications, or to lock it away behind proprietary restrictions.
+Contents  
+
+This repository currently includes the following documents:
+
+- CSG-Open-Source-Publication.pdf  
+Main technical report describing the CSG reactor concept, geometry, materials, neutronics performance, tritium breeding results, safety philosophy, and peaceful-use license. Includes high-level specifications for a 10 m diameter unit targeting about 1,550 MWth and 600+ MWe with TBR ≈ 1.25.
+
+- Appendix-A.pdf  
+Complete material specifications: detailed compositions, densities, temperatures, and nuclear properties for the first wall, LiTiO/Be/PbLi breeder zone, UO2/Pb transmutation blanket, reflector, and borated-concrete biological shield.
+
+- Appendix-B.pdf  
+OpenMC input deck and scripts: full Python code (csgfinalmodel.py) specifying materials, spherical geometry with 32 distributed D–T sources, and tallies, plus an extraction script (extracttbr.py) showing how to compute TBR from statepoint.110.h5. Also includes notes on installation, running the model, and simple sensitivity studies.
+
+- Appendix-C.pdf  
+Safety analysis: qualitative and semi-quantitative discussion of inherent and active safety features, including subcritical operation, negative temperature coefficients, passive decay-heat removal, low-pressure PbLi coolant, accident scenarios (LOCA, station blackout, seismic events, etc.), and comparison to light water reactors, fast breeders, and pure-fusion systems.
+
+- Appendix-D.pdf  
+Economic analysis: preliminary capital cost breakdown, fuel cost estimates (deuterium, in-situ-bred tritium, depleted uranium), O&M cost structure, levelized cost of energy (LCOE) calculations, revenue streams (electricity, waste disposal, possible tritium sales), and high-level market/deployment scenarios for land-based plants and ocean platforms.
+
+Optional code directory (if added)  
+If you include the raw Python scripts extracted from Appendix B, a simple structure could be:
+- scripts/csgfinalmodel.py – OpenMC model generator for the CSG configuration.
+- scripts/extracttbr.py – Post-processing script to extract Li‑6 and Li‑7 tritium production tallies and compute total TBR.
+Users can then:
+- Install OpenMC with ENDF/B-VIII.0 data.
+- Run `python3 csgfinalmodel.py` to generate XML input.[Attachment]
+- Run `openmc` to perform the simulation.
+- Run `python3 extracttbr.py` to report TBR and fission tallies.
+What this repository is and is not  
+
+This repository is:
+- A public, time-stamped technical disclosure of one specific hybrid reactor concept and its supporting neutronics model.
+- An invitation for technical review, replication, and improvement, especially from fusion/fission researchers, students, and open-science communities.
+
+This repository is not:
+- A complete engineering design ready for construction. Detailed mechanical, thermal-hydraulic, control, fuel-cycle, and regulatory design work remain to be done.
+- Legal or design advice. Any real-world implementation must go through proper safety, regulatory, and engineering processes in the relevant jurisdiction.
+
+
+About the author  
+Francis A. Cooper  
+Tarpon Springs, Florida, USA
+
+Contact details and a more personal inventor’s statement are included at the end of CSG-Open-Source-Publication.pdf.
+If you are working on peaceful applications such as ocean restoration, nuclear waste cleanup, climate mitigation, or humanitarian energy access and want to collaborate or provide technical feedback, please reach out using the contact information in the main document.

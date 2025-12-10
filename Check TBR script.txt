@@ -1,0 +1,30 @@
+python3 << 'EOF'
+import openmc
+
+sp = openmc.StatePoint('statepoint.110.h5')
+
+li6_tally = sp.get_tally(name='Li6_tritium')
+li7_tally = sp.get_tally(name='Li7_tritium')
+
+li6_production = li6_tally.mean[0, 0, 0]
+li7_production = li7_tally.mean[0, 0, 0]
+
+TBR = li6_production + li7_production
+
+print(f"\n{'='*50}")
+print(f"SPHERICAL GEOMETRY + OPTIMIZED BREEDER")
+print(f"{'='*50}")
+print(f"Li-6 contribution: {li6_production:.4f}")
+print(f"Li-7 contribution: {li7_production:.4f}")
+print(f"Total TBR:         {TBR:.4f}")
+print(f"{'='*50}")
+print(f"\nTarget: TBR ≥ 1.05")
+if TBR >= 1.05:
+    print(f"Result: ✓✓✓ PASS ✓✓✓")
+    print(f"\nPATENT CLAIM VALIDATED!")
+elif TBR >= 1.0:
+    print(f"Result: Close! (within 5% of target)")
+else:
+    print(f"Result: Still too low, need more optimization")
+print(f"{'='*50}\n")
+EOF
