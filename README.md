@@ -51,4 +51,23 @@ Full terms in LICENSE.txt. By using, you commit to peaceful applications.
 3. Run the code:
    ```bash
    python Open_mc_script.txt
+
+   ## Safety & Responsible Development
+
+This design is a SIMULATION, not a construction manual. Any real-world 
+implementation requires:
+
+- Full engineering design (mechanical, thermal-hydraulic, control systems)
+- Independent peer review and validation
+- Regulatory licensing (NRC in US, equivalent elsewhere)
+- IAEA safeguards agreement
+- Professional nuclear engineering team
+
+**This is NOT a DIY project.**  
+**This is NOT for weapons development.**  
+**This is a gift to the scientific community for peaceful advancement.**
+
+If you cannot commit to peaceful use and regulatory compliance, 
+DO NOT use this design.
+
    
