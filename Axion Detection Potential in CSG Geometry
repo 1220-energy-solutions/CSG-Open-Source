@@ -1,0 +1,140 @@
+# Axion Detection Potential in CSG Geometry
+
+## Background
+
+Recent theoretical work by Zupan et al. (2025, *Journal of High Energy Physics*) demonstrates that deuterium-tritium fusion reactors can produce axions—hypothetical particles that may constitute dark matter—through two mechanisms:
+
+1. **Neutron-nucleus reactions** when fusion neutrons interact with lithium and other nuclei in blanket materials
+1. **Bremsstrahlung radiation** as neutrons decelerate in reactor walls
+
+This work solved a problem previously featured as unsolved on the TV show *The Big Bang Theory* (Season 5).
+
+## Geometric Advantages of CSG
+
+### Standard Tokamak Limitations
+
+- Toroidal plasma geometry
+- Chaotic, random neutron-wall interactions
+- Scattered bremsstrahlung with no coherent structure
+- Difficult to distinguish axion signals from background noise
+
+### CSG Truncated Icosahedron Benefits
+
+The CSG uses **32 distributed fusion sources** (12 pentagons + 20 hexagons) arranged in truncated icosahedral geometry. This creates:
+
+- **Symmetric neutron flux** from geometrically defined points
+- **Predictable interaction zones** in the breeding blanket
+- **Directional information** for particle detection
+- **Time-correlation capability** through pulsed sector operation
+
+## Detector Integration Strategy
+
+### Positioning
+
+- **60 vertices** of truncated icosahedron available for detector modules
+- Symmetry enables directional reconstruction of axion production
+- Clean angular separation between source regions
+
+### Signal Processing
+
+The geometric structure enables:
+
+- **Spatial correlation** analysis matching icosahedral symmetry
+- **Temporal gating** synchronized with specific fusion source activation
+- **Directional cuts** to reduce isotropic background
+- **Coincidence detection** across symmetrically positioned sensors
+
+### Blanket Tuning
+
+Different faces can use different materials to emphasize specific axion production channels:
+
+- Pure Li-6 on selected faces for neutron-lithium reactions
+- Li-Pb eutectic on others for bremsstrahlung enhancement
+- Standard breeding blanket as baseline reference
+
+This creates **spectral diversity** in axion production for better characterization.
+
+## Practical Implementation
+
+### Minimal Design Changes
+
+1. **Sensor ports** at vertex positions (already available in modular design)
+1. **Microwave cavity resonators** for axion-to-photon conversion
+1. **Time-stamping electronics** (nanosecond precision)
+1. **Data pipeline** to computational system for correlation analysis
+
+### Research Value
+
+- **Controllable axion source** vs. passive solar/astrophysical observations
+- **Multi-channel production** (nuclear + bremsstrahlung)
+- **Directional information** not available in isotropic detectors
+- **High neutron flux** in compact geometry
+
+## Coherence Considerations
+
+While individual axion production events are likely incoherent, the geometric arrangement provides:
+
+**Constructive enhancement through spatial organization:**
+
+- Axion production rate scales linearly with random sources: `A_total ≈ N × A_single`
+- With geometric correlation factors: `A_total ≈ N × [1 + (N-1) × C_geom] × A_single`
+- For N=32 sources, even modest geometric coherence (C_geom ≈ 0.1-0.3) yields significant enhancement
+
+**More importantly—cleaner detection:**
+The primary advantage isn’t necessarily *more* axions, but **better signal extraction** through:
+
+- Known source positions enable background subtraction
+- Symmetry-breaking events stand out against geometric pattern
+- Time-correlation removes random coincidences
+- Directional reconstruction identifies production mechanisms
+
+## Relation to Ocean Restoration Mission
+
+This reactor was designed to power ocean cleanup vessels—axion detection is a **secondary discovery**, not the primary purpose.
+
+However, dual-use capability provides:
+
+- Academic research partnerships for validation
+- Additional funding streams (DOE High Energy Physics, NSF)
+- Broader scientific impact beyond energy production
+- International collaboration opportunities
+
+**The mission remains planetary healing.** Dark matter research is a bonus that may accelerate technology validation and deployment.
+
+## Open Questions for Researchers
+
+1. What is the expected axion production rate per fusion source in CSG geometry?
+1. Can time-gating with pulsed operation achieve measurable signal-to-noise improvement?
+1. Which blanket materials optimize which axion production channels?
+1. What detector technologies are best suited for vertex positioning constraints?
+1. Can machine learning extract geometric signatures from multi-channel data?
+
+## Collaboration Welcome
+
+This is speculative but scientifically grounded. If you’re working on:
+
+- Axion detection experiments
+- Fusion reactor neutronics
+- Dark matter searches
+- Geometric signal processing
+
+…and want to explore CSG as a research platform, contact information is in the main repository documentation.
+
+**No funding requests. Just open science.**
+
+-----
+
+## References
+
+Zupan, J., et al. (2025). “Axion production in deuterium-tritium fusion reactors.” *Journal of High Energy Physics*. [Full citation pending publication details]
+
+## Repository Context
+
+This document is part of the CSG open-source release. See:
+
+- `CSG-Open-Source-Publication.pdf` - Main reactor design
+- `Appendix-B.pdf` - OpenMC neutronics model
+- `LICENSE.txt` - Peaceful Use Only terms
+
+**Last Updated:** December 20, 2025  
+**Status:** Theoretical speculation based on recent literature
